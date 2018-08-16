@@ -1,0 +1,52 @@
+state,stateAbbr,adultObesityRate,white,black,latino
+Alabama,AL,35.7,32.4,44.1,28.1
+Alaska,AK,31.4,28.7,43.6,27.9
+Arizona,AZ,29.0,26.0,33.1,35.0
+Arkansas,AR,35.7,34.0,44.2,32.4
+California,CA,25.0,22.7,31.0,32.3
+Colorado,CO,22.3,19.8,29.1,27.1
+Connecticut,CT,26.0,24.3,37.7,30.3
+Delaware,DE,30.7,29.4,36.5,32.1
+District of Columbia,DC,22.6,9.7,35.5,20.0
+Florida,FL,27.4,25.7,35.2,26.8
+Georgia,GA,31.4,28.9,37.7,28.4
+Hawaii,HI,23.8,17.6,31.3,31.4
+Idaho,ID,27.4,27.6,0.0,33.6
+Illinois,IL,31.6,29.2,41.3,36.3
+Indiana,IN,32.5,31.8,41.7,28.7
+Iowa,IA,32.0,31.9,32.1,29.9
+Kansas,KS,31.2,31.5,43.1,35.2
+Kentucky,KY,34.2,33.4,42.4,25.0
+Louisiana,LA,35.5,32.6,42.9,32.2
+Maine,ME,29.9,29.5,34.3,30.5
+Maryland,MD,29.9,27.8,38.1,25.4
+Massachusetts,MA,23.6,22.9,36.6,31.4
+Michigan,MI,32.5,30.7,37.4,38.4
+Minnesota,MN,27.8,27.3,30.4,33.1
+Mississippi,MS,37.3,31.9,44.6,22.3
+Missouri,MO,31.7,30.7,38.6,32.7
+Montana,MT,25.5,24.4,0.0,24.8
+Nebraska,NE,32.0,30.8,37.2,31.8
+Nevada,NV,25.8,26.2,30.8,30.6
+New Hampshire,NH,26.6,27.2,30.3,24.7
+New Jersey,NJ,27.4,25.4,37.2,31.4
+New Mexico,NM,28.3,23.9,34.4,31.3
+New York,NY,25.5,25.1,32.1,30.6
+North Carolina,NC,31.8,28.1,40.2,31.2
+North Dakota,ND,31.9,31.5,15.9,37.2
+Ohio,OH,31.5,30.8,37.6,27.8
+Oklahoma,OK,32.8,32.3,36.6,36.7
+Oregon,OR,28.7,29.0,30.2,32.4
+Pennsylvania,PA,30.3,29.5,36.4,39.5
+Rhode Island,RI,26.6,26.0,31.9,30.8
+South Carolina,SC,32.3,28.9,41.7,28.2
+South Dakota,SD,29.6,29.5,0.0,29.5
+Tennessee,TN,34.8,31.3,45.1,33.0
+Texas,TX,33.7,29.2,42.4,37.4
+Utah,UT,25.4,24.9,30.1,28.1
+Vermont,VT,27.1,25.7,0.0,0.0
+Virginia,VA,29.0,27.3,39.4,29.6
+Washington,WA,28.6,28.2,34.2,34.4
+West Virginia,WV,37.7,36.0,44.6,37.7
+Wisconsin,WI,30.7,30.5,39.9,31.2
+Wyoming,WY,27.7,27.9,0.0,0.0
