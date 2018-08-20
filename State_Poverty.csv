@@ -1,52 +1,52 @@
 state,stateAbbr,povertyRate
-Alabama,AL,19.2%
-Alaska,AK,11.4%
-Arizona,AZ,18.2%
-Arkansas,AR,18.7%
-California,CA,16.4%
-Colorado,CO,12.1%
-Connecticut,CT,10.8%
-Delaware,DE,13.0%
-District of Columbia,DC,18.4%
-Florida,FL,16.6%
-Georgia,GA,18.4%
-Hawaii,HI,11.5%
-Idaho,ID,14.8%
-Illinois,IL,14.3%
-Indiana,IN,15.2%
-Iowa,IA,12.3%
-Kansas,KS,13.5%
-Kentucky,KY,19.0%
-Louisiana,LA,19.9%
-Maine,ME,14.0%
-Maryland,MD,10.4%
-Massachusetts,MA,11.7%
-Michigan,MI,16.2%
-Minnesota,MN,11.4%
-Mississippi,MS,21.9%
-Missouri,MO,15.5%
-Montana,MT,15.2%
-Nebraska,NE,12.3%
-Nevada,NV,15.4%
-New Hampshire,NH,9.2%
-New Jersey,NJ,11.1%
-New Mexico,NM,20.6%
-New York,NY,15.9%
-North Carolina,NC,17.2%
-North Dakota,ND,11.1%
-Ohio,OH,15.8%
-Oklahoma,OK,16.6%
-Oregon,OR,16.4%
-Pennsylvania,PA,13.6%
-Rhode Island,RI,14.8%
-South Carolina,SC,17.9%
-South Dakota,SD,14.1%
-Tennessee,TN,18.2%
-Texas,TX,17.2%
-Utah,UT,11.8%
-Vermont,VT,12.2%
-Virginia,VA,11.8%
-Washington,WA,13.2%
-West Virginia,WV,18.3%
-Wisconsin,WI,13.2%
-Wyoming,WY,10.6%
+Alabama,AL,0.19
+Alaska,AK,0.11
+Arizona,AZ,0.18
+Arkansas,AR,0.19
+California,CA,0.16
+Colorado,CO,0.12
+Connecticut,CT,0.11
+Delaware,DE,0.13
+District of Columbia,DC,0.18
+Florida,FL,0.17
+Georgia,GA,0.18
+Hawaii,HI,0.12
+Idaho,ID,0.15
+Illinois,IL,0.14
+Indiana,IN,0.15
+Iowa,IA,0.12
+Kansas,KS,0.14
+Kentucky,KY,0.19
+Louisiana,LA,0.20
+Maine,ME,0.14
+Maryland,MD,0.10
+Massachusetts,MA,0.12
+Michigan,MI,0.16
+Minnesota,MN,0.11
+Mississippi,MS,0.22
+Missouri,MO,0.16
+Montana,MT,0.15
+Nebraska,NE,0.12
+Nevada,NV,0.15
+New Hampshire,NH,0.09
+New Jersey,NJ,0.11
+New Mexico,NM,0.21
+New York,NY,0.16
+North Carolina,NC,0.17
+North Dakota,ND,0.11
+Ohio,OH,0.16
+Oklahoma,OK,0.17
+Oregon,OR,0.16
+Pennsylvania,PA,0.14
+Rhode Island,RI,0.15
+South Carolina,SC,0.18
+South Dakota,SD,0.14
+Tennessee,TN,0.18
+Texas,TX,0.17
+Utah,UT,0.12
+Vermont,VT,0.12
+Virginia,VA,0.12
+Washington,WA,0.13
+West Virginia,WV,0.18
+Wisconsin,WI,0.13
+Wyoming,WY,0.11

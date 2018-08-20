@@ -1,52 +1,52 @@
 state,stateAbbr,population
-Alabama,AL,"4,874,747"
-Alaska,AK,"739,795"
-Arizona,AZ,"7,016,270"
-Arkansas,AR,"3,004,279"
-California,CA,"39,536,653"
-Colorado,CO,"5,607,154"
-Connecticut,CT,"3,588,184"
-Delaware,DE,"961,939"
-District of Columbia,DC,"693,972"
-Florida,FL,"20,984,400"
-Georgia,GA,"10,429,379"
-Hawaii,HI,"1,427,538"
-Idaho,ID,"1,716,943"
-Illinois,IL,"12,802,023"
-Indiana,IN,"6,666,818"
-Iowa,IA,"3,145,711"
-Kansas,KS,"2,913,123"
-Kentucky,KY,"4,454,189"
-Louisiana,LA,"4,684,333"
-Maine,ME,"1,335,907"
-Maryland,MD,"6,052,177"
-Massachusetts,MA,"6,859,819"
-Michigan,MI,"9,962,311"
-Minnesota,MN,"5,576,606"
-Mississippi,MS,"2,984,100"
-Missouri,MO,"6,113,532"
-Montana,MT,"1,050,493"
-Nebraska,NE,"1,920,076"
-Nevada,NV,"2,998,039"
-New Hampshire,NH,"1,342,795"
-New Jersey,NJ,"9,005,644"
-New Mexico,NM,"2,088,070"
-New York,NY,"19,849,399"
-North Carolina,NC,"10,273,419"
-North Dakota,ND,"755,393"
-Ohio,OH,"11,658,609"
-Oklahoma,OK,"3,930,864"
-Oregon,OR,"4,142,776"
-Pennsylvania,PA,"12,805,537"
-Rhode Island,RI,"1,059,639"
-South Carolina,SC,"5,024,369"
-South Dakota,SD,"869,666"
-Tennessee,TN,"6,715,984"
-Texas,TX,"28,304,596"
-Utah,UT,"3,101,833"
-Vermont,VT,"623,657"
-Virginia,VA,"8,470,020"
-Washington,WA,"7,405,743"
-West Virginia,WV,"1,815,857"
-Wisconsin,WI,"5,795,483"
-Wyoming,WY,"579,315"
+Alabama,AL,4874747
+Alaska,AK,739795
+Arizona,AZ,7016270
+Arkansas,AR,3004279
+California,CA,39536653
+Colorado,CO,5607154
+Connecticut,CT,3588184
+Delaware,DE,961939
+District of Columbia,DC,693972
+Florida,FL,20984400
+Georgia,GA,10429379
+Hawaii,HI,1427538
+Idaho,ID,1716943
+Illinois,IL,12802023
+Indiana,IN,6666818
+Iowa,IA,3145711
+Kansas,KS,2913123
+Kentucky,KY,4454189
+Louisiana,LA,4684333
+Maine,ME,1335907
+Maryland,MD,6052177
+Massachusetts,MA,6859819
+Michigan,MI,9962311
+Minnesota,MN,5576606
+Mississippi,MS,2984100
+Missouri,MO,6113532
+Montana,MT,1050493
+Nebraska,NE,1920076
+Nevada,NV,2998039
+New Hampshire,NH,1342795
+New Jersey,NJ,9005644
+New Mexico,NM,2088070
+New York,NY,19849399
+North Carolina,NC,10273419
+North Dakota,ND,755393
+Ohio,OH,11658609
+Oklahoma,OK,3930864
+Oregon,OR,4142776
+Pennsylvania,PA,12805537
+Rhode Island,RI,1059639
+South Carolina,SC,5024369
+South Dakota,SD,869666
+Tennessee,TN,6715984
+Texas,TX,28304596
+Utah,UT,3101833
+Vermont,VT,623657
+Virginia,VA,8470020
+Washington,WA,7405743
+West Virginia,WV,1815857
+Wisconsin,WI,5795483
+Wyoming,WY,579315
