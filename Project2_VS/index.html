@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Obesity and Social Determinants</title>
+    <meta name="description" content="Obesity and Social Determinants">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        body {
+            min-height: 1280px;
+            font-weight: 300;
+            color: #2a2a2a;
+        }
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        a {
+            margin: 0;
+            font-weight: 300;
+        }
+        a,
+        a:visited,
+        a:hover {
+            color: #f30;
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+        }
+        #intro {
+            max-width: 40rem;
+            margin: 1rem auto;
+            text-align: center;
+        }
+        .intro__overline {
+            font-size: 1.4rem;
+        }
+        .intro__hed {
+            font-size: 3.8rem;
+            margin: auto;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+        .intro__dek {
+            font-size: 1.4rem;
+        }
+    
+        #intro {
+            margin-bottom: 320px;
+        }
+        #outro {
+            height: 640px;
+        }
+        
+        #scroll {
+            position: relative;
+            border-top: 1px dashed #000;
+        }
+        .scroll__graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: auto;
+            background-color: #fff;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        .scroll__graphic.is-fixed {
+            position: fixed;
+        }
+        .scroll__graphic.is-bottom {
+            bottom: 0;
+            top: auto;
+        }
+       
+        .scroll__text {
+			margin: auto;
+			position: relative;
+            padding: 0 1rem;
+            max-width: 50rem;
+            width: 90%;
+        }
+        .step {
+            margin: 2rem auto;
+            border: 1px solid #333;
+        }
+        .step.is-active {
+            background-color: lightgoldenrodyellow;
+        }
+        .step p {
+            text-align: center;
+            padding: 1rem;
+            font-size: 2.2rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id='intro'>
+        <h1 class='intro__hed'>State of Obesity and Social Determinants</h1>
+        <p class='intro__dek'>
+            Welcome to our Data Science Boot Camp Project! 
+        </p>
+    </section>
+    <section id='scroll'>
+        <div class='scroll__graphic'>
+        </div>
+        <div class='scroll__text'>
+            <div class='step' data-step='1'>
+				<p>Our team understands the growing interest within healthcare providers to combine wide variety of big data to gain insight, improve accuracy of predictive models and address increasing health risks of populations they serve. </p>
+				
+				<p>This project aims to contribute to their effort.</p>
+				
+				<p>The prevalence of Obesity has progressively increased globally over the years. The Social Determinants of this pandemic are many.  
+                </p>
+            </div>
+            <div class='step' data-step='2'>
+				<p> Social determinants of health are considered structural predictors of overall health of the population. They include conditions in which people are born, grow, live, etc.  </p>
+					
+				<p> Uniquely contributing would be their socio-economic status, physical environment, access to healthy food options, social support network and healthcare.*  </p>
+					
+				<p> *Definition adopted from Kaiser Family Foundation.</p>
+            </div>
+            <div class='step' data-step='3'>
+				<p>Here we provide insights into current state of Obesity in the United States, and 3 data sets of Social Determinants of Health:  </p>
+				<p>
+					1) Economic Stability: Proverty and Income Level, </p>
+
+				<p>	2) Food: Locations of Fast Food Restaurants, and </p>
+					
+				<p>3) Neighborhood and Physical Environment: Locations of Fitness Centers</p>
+					
+				<p>Select data from our interactive maps!
+				</p>
+			</div>
+        </div>
+    </section>
+    <section id='outro'></section>
+    <div class='debug'></div>
+    <script src='../d3.v4.min.js'></script>
+    <script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script>
+    <script src='../scrollama.min.js'></script>
+    <script>
+        // using d3 for convenience
+        var container = d3.select('#scroll');
+        var graphic = container.select('.scroll__graphic');
+        var chart = graphic.select('.chart');
+        var text = container.select('.scroll__text');
+        var step = text.selectAll('.step');
+        // initialize the scrollama
+        var scroller = scrollama();
+        // generic window resize listener event
+        function handleResize() {
+            // 1. update height of step elements
+            var stepHeight = Math.floor(window.innerHeight * 0.75);
+            step.style('height', stepHeight + 'px');
+            // 2. update width/height of graphic element
+            var bodyWidth = d3.select('body').node().offsetWidth;
+            graphic
+                .style('width', bodyWidth + 'px')
+                .style('height', window.innerHeight + 'px');
+            var chartMargin = 32;
+            var textWidth = text.node().offsetWidth;
+            var chartWidth = graphic.node().offsetWidth - textWidth - chartMargin;
+            chart
+                .style('width', chartWidth + 'px')
+                .style('height', Math.floor(window.innerHeight / 2) + 'px');
+            // 3. tell scrollama to update new element dimensions
+            scroller.resize();
+        }
+        // scrollama event handlers
+        function handleStepEnter(response) {
+            // response = { element, direction, index }
+            // add color to current step only
+            step.classed('is-active', function (d, i) {
+                return i === response.index;
+            })
+            // update graphic based on step
+            chart.select('p').text(response.index + 0)
+        }
+        function handleContainerEnter(response) {
+            // response = { direction }
+            // sticky the graphic (old school)
+            graphic.classed('is-fixed', true);
+            graphic.classed('is-bottom', false);
+        }
+        function handleContainerExit(response) {
+            // response = { direction }
+            // un-sticky the graphic, and pin to top/bottom of container
+            graphic.classed('is-fixed', false);
+            graphic.classed('is-bottom', response.direction === 'down');
+        }
+        function init() {
+            // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+            handleResize();
+            // 2. setup the scroller passing options
+            // this will also initialize trigger observations
+            // 3. bind scrollama event handlers (this can be chained like below)
+            scroller.setup({
+                container: '#scroll',
+                graphic: '.scroll__graphic',
+                text: '.scroll__text',
+                step: '.scroll__text .step',
+                debug: true,
+            })
+                .onStepEnter(handleStepEnter)
+                .onContainerEnter(handleContainerEnter)
+                .onContainerExit(handleContainerExit);
+            // setup resize event
+            window.addEventListener('resize', handleResize);
+        }
+        // kick things off
+        init();
+	</script>
+	
+</body>
+
+</html>
