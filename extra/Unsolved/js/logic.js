@@ -19,10 +19,26 @@ var map = L.map("map-id", {
 var path = 'FastFoodRestaurants.csv';
 
 var marker = L.markerClusterGroup();
-d3.csv(path, function(response)
+
+readInfo();
+
+function readInfo(selected ='')
 {
-    
-    
+  d3.csv(path, function(response)
+  {
+    if (!selected)
+      {makeMap(response);}
+    else
+    {
+      let mySelections = response.filter(d => d.name ===selected);
+      makeMap(mySelections);
+    }
+
+  });
+}
+
+function makeMap(response)
+{
 
     // Loop through our data...
     response.forEach(d => {
@@ -42,54 +58,55 @@ d3.csv(path, function(response)
     // Add our marker cluster layer to the map
     map.addLayer(marker);
 
-});
+}
 
 map.on('zoomend', function() {
+  var restraunts = []
   marker.eachLayer(m=>{
     if(map.getBounds().contains(m.getLatLng()))
-      {console.log(m.options.title);}
+      {restraunts.push(m.options.title);}
   });
+  createPie(restraunts);
 });
 
 
+function createPie(restaurants)
+{
+  var counts = countRestaurants(restaurants);
+  var values = [];
+  var labels = [];
 
+  
 
+  Object.entries(counts).forEach(([key, value]) => {
+    values.push(value);
+    labels.push(key);
+  });
 
-// // Building API query URL
-// var baseURL = "https://data.cityofnewyork.us/resource/fhrw-4uyv.json?";
-// var date = "$where=created_date between'2016-01-10T12:00:00' and '2017-01-01T14:00:00'";
-// var complaint = "&complaint_type=Rodent";
-// var limit = "&$limit=10000";
+  var data = [{
+    values: values,
+    labels: labels,
+    type: 'pie'
+  }];
 
-// // Assembling API query URL
-// var url = baseURL + date + complaint + limit;
+  d3.select(graph1).append('div').attr("id",'pie');
+  Plotly.newPlot('pie', data);
 
-// // Grabbing the data with d3..
-// d3.json(url, function(response) {
+  var myPlot = document.getElementById('pie');
+      myPlot.on('plotly_click', function(data){
+        map.removeLayer(marker.eachLayer(m=>m));
+        readInfo(data.points[0].label);
+      });
+}
 
-//   // Creating a new marker cluster group
-//     var markers = L.markerClusterGroup({
-//         iconCreateFunction: function(cluster) {
-//             return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>',iconSize:40 });
-//         }
-//     });
+function countRestaurants(arr) {
+  var counts = {};
 
-//   // Loop through our data...
-//   for (var i = 0; i < response.length; i++) {
-//     // set the data location property to a variable
-//     var location = response[i].location;
+  for (var i = 0; i < arr.length; i++) 
+  {
+    var num = arr[i];
+    counts[num] = counts[num] ? counts[num] + 1 : 1;
+  }
 
-//     // If the data has a location property...
-//     if (location) {
-
-//       // Add a new marker to the cluster group and bind a pop-up
-//       markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-//         .bindPopup(response[i].descriptor));
-//     }
-
-//   }
-
-//   // Add our marker cluster layer to the map
-//   map.addLayer(markers);
-
-// });
+return counts;
+}
