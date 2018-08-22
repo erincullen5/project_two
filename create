@@ -1,0 +1,23 @@
+CREATE TABLE `obesity` (
+  `state_id` INTEGER PRIMARY KEY,
+  `state` text,
+  `stateAbbr` text,
+  `adultObesityRate` double DEFAULT NULL,
+  `white` double DEFAULT NULL,
+  `black` double DEFAULT NULL,
+  `latino` double DEFAULT NULL
+);
+
+CREATE TABLE `population` (
+  `state_id` INTEGER PRIMARY KEY,
+  `state` text,
+  `stateAbbr` text,
+  `population` int(11) DEFAULT NULL
+);
+
+CREATE TABLE `poverty` (
+  `state_id` INTEGER PRIMARY KEY,
+  `state` text,
+  `stateAbbr` text,
+  `povertyRate` double DEFAULT NULL
+);

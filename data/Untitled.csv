@@ -1,0 +1,52 @@
+"state_id","state","stateAbbr","povertyRate"
+1,"Alabama","AL",0.19
+2,"Alaska","AK",0.11
+3,"Arizona","AZ",0.18
+4,"Arkansas","AR",0.19
+5,"California","CA",0.16
+6,"Colorado","CO",0.12
+7,"Connecticut","CT",0.11
+8,"Delaware","DE",0.13
+9,"District of Columbia","DC",0.18
+10,"Florida","FL",0.17
+11,"Georgia","GA",0.18
+12,"Hawaii","HI",0.12
+13,"Idaho","ID",0.15
+14,"Illinois","IL",0.14
+15,"Indiana","IN",0.15
+16,"Iowa","IA",0.12
+17,"Kansas","KS",0.14
+18,"Kentucky","KY",0.19
+19,"Louisiana","LA",0.2
+20,"Maine","ME",0.14
+21,"Maryland","MD",0.1
+22,"Massachusetts","MA",0.12
+23,"Michigan","MI",0.16
+24,"Minnesota","MN",0.11
+25,"Mississippi","MS",0.22
+26,"Missouri","MO",0.16
+27,"Montana","MT",0.15
+28,"Nebraska","NE",0.12
+29,"Nevada","NV",0.15
+30,"New Hampshire","NH",0.09
+31,"New Jersey","NJ",0.11
+32,"New Mexico","NM",0.21
+33,"New York","NY",0.16
+34,"North Carolina","NC",0.17
+35,"North Dakota","ND",0.11
+36,"Ohio","OH",0.16
+37,"Oklahoma","OK",0.17
+38,"Oregon","OR",0.16
+39,"Pennsylvania","PA",0.14
+40,"Rhode Island","RI",0.15
+41,"South Carolina","SC",0.18
+42,"South Dakota","SD",0.14
+43,"Tennessee","TN",0.18
+44,"Texas","TX",0.17
+45,"Utah","UT",0.12
+46,"Vermont","VT",0.12
+47,"Virginia","VA",0.12
+48,"Washington","WA",0.13
+49,"West Virginia","WV",0.18
+50,"Wisconsin","WI",0.13
+51,"Wyoming","WY",0.11
