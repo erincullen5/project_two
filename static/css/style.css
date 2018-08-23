@@ -1,0 +1,23 @@
+html,
+body,
+#map-id {
+  height: 100%;
+  width: 90%;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+  padding: 0;
+
+}
+
+.nameplate {
+  color:yellow !important;
+  font-style: italic !important;
+  font-family: cursive !important;
+  font-weight: 500 !important;
+}
+
+.navcolor
+{
+  background-color: rgb(71,197,197);
+}

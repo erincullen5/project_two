@@ -2,66 +2,77 @@ function createScatter(selectionLeft,selectionRight){
     d3.select('#main-graph').select('div').remove();
     var plotpoint = d3.select('#main-graph').append('div').attr("id",'scatter').node();
 
-    var url1 = "/data/poverty"
-    var url2 = "/data/obesity"
-    var xdata = ''
-    var ydata = ''
+    var url1 = "/data/" + selectionLeft;
+    var url2 = "/data/" + selectionRight;
 
-    d3.json(url1, function(response){
-        console.log(response)
-       xdata  = [response]
-    });
+    Promise.all([d3.json(url1), d3.json(url2)]).then(response => {
+        [xdata, ydata] = response;
+        var leftObj ={};
+        var rightObj ={};
 
-    d3.json(url2, function(response){
-        console.log(response)
-        ydata = [response]
-    });
+        xdata.forEach(d=> leftObj[d.state]=d.rate);
+        createTable(leftObj,'left');
+        ydata.forEach(d=> rightObj[d.state]=d.rate);
+        createTable(rightObj, 'right');
+        
+        var data = [{
+            x: xdata.map(d => d.rate),
+            y: ydata.map(d => d.rate),
+            text: ydata.map(d => d.state),
+            type: 'scatter',
+            mode: 'markers'
+        }]
+    
+        var layout = {
+            title: `${titleCase(selectionLeft)} vs ${titleCase(selectionRight)}`,
+            xaxis: {
+              title: `${titleCase(selectionLeft)}`
+            },
+            yaxis: {
+              title: `${titleCase(selectionRight)}`
+            }
+          };
+    
+        Plotly.newPlot(plotpoint, data, layout);
 
-    var data = [{
-        x: xdata,
-        y: ydata,
-        type: 'scatter',
-    }]
-
-    var layout = {
-        title: "${selectionLeft} vs ${selectionRight}",
-        xaxis: {
-          title: "${selectionLeft}"
-        },
-        yaxis: {
-          title: "${selectionRight}"
-        }
-      };
-
-    Plotly.newPlot(plotpoint, data, layout);
+    })
 };
 
-createScatter('Obesity','Poverty')
 
 
 
 function updatePie()
 {
-    initPie('left');
-    initPie('right');
+    if(checkIfState(selectionLeft))
+        {initPie('left');}
+    if(checkIfState(selectionRight))
+        {initPie('right');}
 }
 
 
 function initPie(side) {
     var markerGroup = side==='left'?markerLeft:markerRight;
-    var locations = []
+    var locations = [];
 
     markerGroup.eachLayer(m=>{
       if(map.getBounds().contains(m.getLatLng()))
-        {locations.push(m.options.title);}
+        {
+            var markerObj ={};
+            markerObj['name']=m.options.title;
+            markerObj['latitude'] = m.getLatLng().lat;
+            markerObj['longitude'] = m.getLatLng().lng;
+
+            locations.push(markerObj)
+        }
     });
+
     createPie(locations,side);
 };
   
   
 function createPie(locations,side)
 {
-    var counts = countLocations(locations);
+    var counts = countLocations(locations.map(d=>d.name));
     var labels = [];
     var values = [];
 
@@ -107,23 +118,38 @@ function createPie(locations,side)
     Plotly.newPlot(plottingPoint, data,layout);
 
     plottingPoint.on('plotly_click', function(data){
-            markerGroup.clearLayers();
-
-            var path = '/data/' + side==='left'?selectionLeft:selectionRight;
-
-            getDataPoints(path,data.points[0].label,side);
-        });
+    
+        markerGroup.clearLayers();
+        getDataPoints(undefined,locations.filter(l=>l.name === data.points[0].label),side);
+    });
 }
 
 
-function createTable(myObj,path,side)
+function createTable(myObj,side)
 {
+    
     var tag = side==='left'?'#graph1':'#graph2';
+    var selection = side==='left'?selectionLeft:selectionRight;
 
     d3.select(tag).selectAll('div').remove();
     var plottingPoint = d3.select(tag).append('div').attr("id",'table');
+    var table = plottingPoint.append('table').classed('table',true).classed('table-striped',true);
+    
+
+    var tableHead = table.append('thead').append('tr');
+    tableHead.append('th').text('State').classed('table-head',true);
+    tableHead.append('th').text(`${titleCase(selection)}`).classed('table-head',true);
+    var tableBody = table.append('tbody');
 
     var sortedData = sortProperties(myObj);
+    var slicedData = sortedData.slice(0,10);
+
+    slicedData.forEach((element) => {
+        var row = tableBody.append("tr");
+        row.append("td").text(element[0]);
+        row.append('td').text(element[1]);
+        }); 
+
 }
 
 

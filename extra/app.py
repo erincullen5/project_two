@@ -70,21 +70,7 @@ def byState(sample):
 @app.route("/names")
 def names():
     results = engine.table_names()
-    # return jsonify(results)
-    
-    #UPDATED TO RETURN 0 and 1
-    data = []
-    
-    for r in results:
-        data_dict = {}
-        if r == "poverty" or  r=="obesity" or r=="population": 
-            data_dict[r] = str(0)
-            data.append(data_dict)
-        if r == "fastfood" or  r=="gyms":
-            data_dict[r] = str(1)
-            data.append(data_dict)
-    
-    return jsonify(data)
+    return jsonify(results)
 
 if __name__ == '__main__':
     app.run(debug=True)
