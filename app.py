@@ -15,9 +15,6 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 import sqlite3
-
-#create an engine and connect to mysql database
-# engine = create_engine("mysql://root:juNEtwentyONE7512475@localhost/fast_food", echo = True)
 engine = create_engine("sqlite:///project.db")
 Base = automap_base()
 
