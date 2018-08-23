@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>D3Times</title>
+	<title>Our Sassy Project</title>
 	
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -11,7 +11,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 
   
    <!-- Leaflet JS & CSS -->
@@ -22,11 +22,11 @@
    <script src="https://d3js.org/d3.v4.min.js"></script>
 
    <!-- Our CSS -->
-   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+   <link rel="stylesheet" type="text/css" href="../static/css/bystate.css">
 
-    <!-- extra_markers
-    <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
-    <script src="js/leaflet.extra-markers.min.js"></script> -->
+    <!-- Leaflet-Choropleth JavaScript -->
+  	<script type="text/javascript" src="../static/js/choropleth.js"></script>
 
 	<!-- Marker Cluster JS & CSS -->
 	<script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
@@ -40,9 +40,9 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-primary">
-		<a class="navbar-brand groupawesome" href="#">
-		  <img src="logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+		  <img src="../static/img/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
 		  Sassy Stingrays
 		</a>
 	  </nav>
@@ -55,9 +55,7 @@
 					<hr>
 				</div>
 				<div id="selection1" class="panel-body select">
-					<p class='test'>Obesity</p>
-					<p>Obesity</p>
-					<p>Obesity</p>
+					<!-- insert choices here -->
 				</div>
 			  </div>
 		</div>
@@ -68,9 +66,7 @@
 				  <hr>
 				</div>
 				<div id="selection2" class="panel-body select">
-					<p class = 'test'>Funding</p>
-					<p>Obesity</p>
-					<p>Obesity</p>
+					<!-- insert choices here -->
 				</div>
 			  </div>
 		</div>
@@ -104,8 +100,12 @@
 		<p><!-- Insert your Copyright Info here --></p>
 	</div>
 	  <!-- Our JavaScript -->
-	  <script type="text/javascript" src="js/config.js"></script>
-	  <script type="text/javascript" src="js/logic.js"></script>
+	  <script type="text/javascript" src="../static/js/config.js"></script>
+	  <script type="text/javascript" src="../static/js/map.functions.js"></script>
+	  <script type="text/javascript" src="../static/js/plotly.functions.js"></script>
+	  <script type="text/javascript" src="../static/js/main.js"></script>
+
+	  <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
 
 </body>
 </html>
