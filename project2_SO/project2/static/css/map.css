@@ -45,3 +45,7 @@ html {
 h1 {
   text-align: center;
 }
+
+#scatter{
+  height:115%;
+}

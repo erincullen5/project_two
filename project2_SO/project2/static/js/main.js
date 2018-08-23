@@ -52,48 +52,32 @@ function switchBoard(selection,side)   //directs user input to proper functions
 
     if(!checkIfState(selectionLeft) && !checkIfState(selectionRight))  //if both are plotByState
     {
+      clearSide('left');
+      clearSide('right');
       createScatter(selectionLeft,selectionRight);   ///inside plotly.function.js
+    }
+    else if (!d3.select('#scatter').empty())  //if scatter plot exists
+    {
+      displayMap();
     }
     else
     {
-      initMap();
-      var path = '/data/' + value;
-
-      if(checkIfState(value))   //checks if it's plotBy points or state based capitalizatoin of first letter
-      {
-        getDataPoints(path, undefined,side)
-      }
-      else
-      {
-        getDataStates(path, side)
-      }
-
-    }
-    
-  }
-  if(side==='left')
-  {
-    markerLeft.clearLayers();
-
-    if(checkIfState(selectionLeft))
-    {
-      geojson.clearLayers();
-      legend.remove();
+      clearSide(side);
+      choosePlotby(value,side);
     }
   }
-  else
-  {
-    markerRight.clearLayers();
-
-    if(checkIfState(selectionRight))
-    {
-      geojson.clearLayers();
-      legend.remove();
-    }
-  }
+}
 
 
+function displayMap()
+{
+  clearSide('left');
+  clearSide('right');
 
+  initMap();
+  
+  choosePlotby(selectionLeft,'left');
+  choosePlotby(selectionRight,'right');
 }
 
 function setActive(selection,side)
@@ -112,6 +96,34 @@ function setActive(selection,side)
   {
     selectionRight = d3.select(selection).attr('id');
   }
+}
+
+function clearSide(side)
+{
+  if(side==='left')
+  {
+    d3.select('#graph1').selectAll('div').remove();
+    markerLeft.clearLayers();
+  }
+  else
+  {
+    d3.select('#graph2').selectAll('div').remove();
+    markerRight.clearLayers();
+  }
+}
+
+
+function choosePlotby (selection,side)
+{
+  var path = '/data/' + selection;
+  if(checkIfState(selection))   //checks if it's plotBy points or state based capitalizatoin of first letter
+    {
+      getDataPoints(path, undefined,side)
+    }
+    else
+    {
+      getDataStates(path, side)
+    }
 }
 
 
@@ -134,7 +146,7 @@ function checkIfState(selection)
   
   // return mapping[string.toLowerCase()];
 
-  return !(d3.select('#'+selection).attr('value'));
+  return (d3.select('#'+selection).attr('value')==true);
 
 }
 
@@ -151,14 +163,8 @@ function callEvent()
   {
     markerLeft.clearLayers();
     markerRight.clearLayers();
-    readInfo(undefined,'left');
-    readInfo(undefined,'right');
+    displayMap();
   });
-
-  map.on('zoomend', updatePie);
-  map.on('move', updatePie);
-
-
 
   d3.select('#selection1').selectAll('p').on('click',function(){
     switchBoard( this ,'left')});

@@ -35,26 +35,36 @@ function createScatter(selectionLeft,selectionRight){
 
 function updatePie()
 {
-    initPie('left');
-    initPie('right');
+    if(checkIfState(selectionLeft))
+        {initPie('left');}
+    if(checkIfState(selectionRight))
+        {initPie('right');}
 }
 
 
 function initPie(side) {
     var markerGroup = side==='left'?markerLeft:markerRight;
-    var locations = []
+    var locations = [];
 
     markerGroup.eachLayer(m=>{
       if(map.getBounds().contains(m.getLatLng()))
-        {locations.push(m.options.title);}
+        {
+            var markerObj ={};
+            markerObj['name']=m.options.title;
+            markerObj['latitude'] = m.getLatLng().lat;
+            markerObj['longitude'] = m.getLatLng().lng;
+
+            locations.push(markerObj)
+        }
     });
+
     createPie(locations,side);
 };
   
   
 function createPie(locations,side)
 {
-    var counts = countLocations(locations);
+    var counts = countLocations(locations.map(d=>d.name));
     var labels = [];
     var values = [];
 
@@ -100,23 +110,38 @@ function createPie(locations,side)
     Plotly.newPlot(plottingPoint, data,layout);
 
     plottingPoint.on('plotly_click', function(data){
-            markerGroup.clearLayers();
-
-            var path = '/data/' + side==='left'?selectionLeft:selectionRight;
-
-            getDataPoints(path,data.points[0].label,side);
-        });
+    
+        markerGroup.clearLayers();
+        getDataPoints(undefined,locations.filter(l=>l.name === data.points[0].label),side);
+    });
 }
 
 
-function createTable(myObj,path,side)
+function createTable(myObj,side)
 {
+    
     var tag = side==='left'?'#graph1':'#graph2';
+    var selection = side==='left'?selectionLeft:selectionRight;
 
     d3.select(tag).selectAll('div').remove();
     var plottingPoint = d3.select(tag).append('div').attr("id",'table');
+    var table = plottingPoint.append('table').classed('table',true).classed('table-striped',true);
+    
+
+    var tableHead = table.append('thead').append('tr');
+    tableHead.append('th').text('State').classed('table-head',true);
+    tableHead.append('th').text(`${titleCase(selection)}`).classed('table-head',true);
+    var tableBody = table.append('tbody');
 
     var sortedData = sortProperties(myObj);
+    var slicedData = sortedData.slice(0,10);
+
+    slicedData.forEach((element) => {
+        var row = tableBody.append("tr");
+        row.append("td").text(element[0]);
+        row.append('td').text(element[1]);
+        }); 
+
 }
 
 
