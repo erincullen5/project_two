@@ -44,30 +44,33 @@ def home():
 def byState(sample):
     try: 
         results = session.query(Base.classes[sample].state, Base.classes[sample].rate).all()
-        return jsonify(results)
+        
+        data = []
+        for r in results:
+            data_dict = {}
+            data_dict["state"] = (r.state)
+            data_dict["rate"] = (r.rate)
+            data.append(data_dict)
+        return jsonify(data)
+
 
     except: 
         results = session.query(Base.classes[sample].latitude, Base.classes[sample].longitude, Base.classes[sample].name).all()
-        return jsonify(results)
+
+        data = []
+        for r in results:
+            data_dict = {}
+            data_dict["latitude"] = str(r.latitude)
+            data_dict["longitude"] = str(r.longitude)
+            data_dict["name"] = r.name
+            data.append(data_dict)
+        return jsonify(data)
 
 
 @app.route("/names")
 def names():
     results = engine.table_names()
     return jsonify(results)
-
-
-@app.route("/ffdata")
-def data():
-    results = session.query(FastFoodTable).all()
-    data = []
-    for r in results:
-        data_dict = {}
-        data_dict["latitude"] = str(r.latitude)
-        data_dict["longitude"] = str(r.longitude)
-        data_dict["name"] = r.name
-        data.append(data_dict)
-    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
