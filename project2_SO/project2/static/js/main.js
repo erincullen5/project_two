@@ -10,35 +10,44 @@ function init()
     var selector = d3.selectAll(".select");
   
     // Use the list of sample names to populate the select options
-    d3.json("/names", function(sampleNames)  {
-      sampleNames.slice(0,-1).forEach((sample) => {
-        selector
-                .append("p")
-                .text(titleCase(sample))
-                .attr("value", sample)
-                .classed('default', true);
+    d3.json("/names").then( function(sampleNames)  {
+      sampleNames.forEach( (sample) =>
+      {
+        Object.entries(sample).forEach( ([key, value])=>
+        {
+          selector
+                  .append("p")
+                  .text(titleCase(key))
+                  .attr("value", value)
+                  .attr("id", key)
+                  .classed('default', true);
+        });
       });
+
+      callEvent();
+
+      d3.select('#selection1').select('#'+selectionLeft).classed('active',true);
+      d3.select('#selection2').select('#'+selectionRight).classed('active',true);
+
+      
+      getDataStates('/data/' + selectionLeft, 'left');
+      getDataPoints('/data/' + selectionRight, undefined,'right');
 
     });
 
-    d3.select('#selection1').select('.'+selectionLeft).classed('active',true);
-    d3.select('#selection2').select('.'+selectionRight).classed('active',true);
-
     initMap();
-    initPie('right');
     
-    getDataStates('/data/' + selectionLeft, 'left');
-    getDataPoints('/data/' + selectionRight, undefined,'right');
     
 }
 
 
 function switchBoard(selection,side)   //directs user input to proper functions
 {
-  var value = d3.select(selection).attr('value');
-
+  var value = d3.select(selection).attr('id');
+  
   if (value !== selectionLeft && value !== selectionRight) 
   {
+
     setActive(selection,side)
 
     if(!checkIfState(selectionLeft) && !checkIfState(selectionRight))  //if both are plotByState
@@ -47,10 +56,10 @@ function switchBoard(selection,side)   //directs user input to proper functions
     }
     else
     {
-      //createMap()
+      initMap();
       var path = '/data/' + value;
 
-      if(checkTitleCase(value))   //checks if it's plotBy points or state based capitalizatoin of first letter
+      if(checkIfState(value))   //checks if it's plotBy points or state based capitalizatoin of first letter
       {
         getDataPoints(path, undefined,side)
       }
@@ -62,17 +71,47 @@ function switchBoard(selection,side)   //directs user input to proper functions
     }
     
   }
+  if(side==='left')
+  {
+    markerLeft.clearLayers();
+
+    if(checkIfState(selectionLeft))
+    {
+      geojson.clearLayers();
+      legend.remove();
+    }
+  }
+  else
+  {
+    markerRight.clearLayers();
+
+    if(checkIfState(selectionRight))
+    {
+      geojson.clearLayers();
+      legend.remove();
+    }
+  }
+
+
+
 }
 
 function setActive(selection,side)
 {
-  d3.select( (side==='left'?'#selection1':'#selection2') )
+  d3.select( side==='left'?'#selection1':'#selection2' )
     .selectAll('p')
     .classed('active',false);
 
   d3.select(selection).classed('active',true);
 
-  side==='left'?selectionLeft:selectionRight = d3.select(this).attr('value');
+  if(side==='left')
+  {
+    selectionLeft= d3.select(selection).attr('id');
+  }
+  else
+  {
+    selectionRight = d3.select(selection).attr('id');
+  }
 }
 
 
@@ -83,9 +122,20 @@ function titleCase(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function checkIfState(string)
+function checkIfState(selection)
 {
-  return (string.charAt(0) == string.charAt(0).toUpperCase())
+  // var mapping = {
+  //   fastfood: false,
+  //   gyms: false,
+  //   obesity: true,
+  //   population: true,
+  //   poverty: true,
+  // }
+  
+  // return mapping[string.toLowerCase()];
+
+  return !(d3.select('#'+selection).attr('value'));
+
 }
 
 
@@ -93,41 +143,27 @@ function checkIfState(string)
 //////EVENT LISTENERS///////////////////
 ///////////////////////////////////////
 
-d3.select('#clear_button').on('click', function()
+
+
+function callEvent()
 {
-  markerLeft.clearLayers();
-  markerRight.clearLayers();
-  readInfo(undefined,'left');
-  readInfo(undefined,'right');
-});
-
-map.on('zoomend', updatePie);
-map.on('move', updatePie);
-
-
-
-d3.select('#selection1').selectAll('p').on('click',function(){
-  markerLeft.clearLayers();
-
-  if(checkIfState(selectionLeft))
+  d3.select('#clear_button').on('click', function()
   {
-    geojson.clearLayers();
-    legend.remove();
-  }
+    markerLeft.clearLayers();
+    markerRight.clearLayers();
+    readInfo(undefined,'left');
+    readInfo(undefined,'right');
+  });
 
-  switchBoard( this ,'left');
-});
+  map.on('zoomend', updatePie);
+  map.on('move', updatePie);
 
 
 
-d3.select('#selection2').selectAll('p').on('click',function(){
-  markerRight.clearLayers();
+  d3.select('#selection1').selectAll('p').on('click',function(){
+    switchBoard( this ,'left')});
 
-  if(checkIfState(selectionRight))
-  {
-    geojson.clearLayers();
-    legend.remove();
-  }
+  d3.select('#selection2').selectAll('p').on('click',function(){
+    switchBoard( this ,'right')});
 
-  switchBoard( this ,'right');
-});
+}

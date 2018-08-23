@@ -2,41 +2,34 @@ function createScatter(selectionLeft,selectionRight){
     d3.select('#main-graph').select('div').remove();
     var plotpoint = d3.select('#main-graph').append('div').attr("id",'scatter').node();
 
-    var url1 = "/data/poverty"
-    var url2 = "/data/obesity"
-    var xdata = ''
-    var ydata = ''
+    var url1 = "/data/" + selectionLeft;
+    var url2 = "/data/" + selectionRight;
 
-    d3.json(url1, function(response){
-        console.log(response)
-       xdata  = [response]
-    });
+    Promise.all([d3.json(url1), d3.json(url2)]).then(response => {
+        [xdata, ydata] = response;
+        
+        var data = [{
+            x: xdata.map(d => d.rate),
+            y: ydata.map(d => d.rate),
+            type: 'scatter',
+            mode: 'markers'
+        }]
+    
+        var layout = {
+            title: `${titleCase(selectionLeft)} vs ${titleCase(selectionRight)}`,
+            xaxis: {
+              title: `${titleCase(selectionLeft)}`
+            },
+            yaxis: {
+              title: `${titleCase(selectionRight)}`
+            }
+          };
+    
+        Plotly.newPlot(plotpoint, data, layout);
 
-    d3.json(url2, function(response){
-        console.log(response)
-        ydata = [response]
-    });
-
-    var data = [{
-        x: xdata,
-        y: ydata,
-        type: 'scatter',
-    }]
-
-    var layout = {
-        title: "${selectionLeft} vs ${selectionRight}",
-        xaxis: {
-          title: "${selectionLeft}"
-        },
-        yaxis: {
-          title: "${selectionRight}"
-        }
-      };
-
-    Plotly.newPlot(plotpoint, data, layout);
+    })
 };
 
-createScatter('Obesity','Poverty')
 
 
 

@@ -16,6 +16,7 @@ function initMap()
 
     d3.select('#main-graph').selectAll('div').remove();
     var plottingPoint = d3.select('#main-graph').append('div').attr("id",'map-id').node();
+    console.log('text')
 
     map = L.map(plottingPoint, {
     center: [39.8283, -98.5795],
@@ -38,7 +39,7 @@ function initMap()
 //////////////////////////////////////////////////
 function getDataPoints(path, selected ='',side)
 {
-    d3.json(path, function(response)    //pulls data from database
+    d3.json(path).then( function(response)    //pulls data from database
     {
         if (!selected)
             {plotByPoint(response,side);}
@@ -47,6 +48,7 @@ function getDataPoints(path, selected ='',side)
             let mySelections = response.filter(d => d.name ===selected);
             plotByPoint(mySelections,side);
         }
+        updatePie();
 
     });
 }
@@ -60,15 +62,15 @@ function getDataStates(path, side)
 
     var baseGeoJSON = "../static/json/states.json";
 
-    d3.json(path, function(response)       //pulls data from database
+    d3.json(path).then( function(response)       //pulls data from database
     {
-
+       
         response.forEach(d=> myObj[d.state]=d.rate)
 
         createTable(myObj,path,side);
     });
 
-    d3.json(baseGeoJSON , function(data)  //modifies geojson with our data
+    d3.json(baseGeoJSON).then( function(data)  //modifies geojson with our data
     {
         data.features.forEach(d=> d.properties['STATE'] = myObj[d.properties.NAME]);
     
