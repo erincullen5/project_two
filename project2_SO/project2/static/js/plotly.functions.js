@@ -7,10 +7,18 @@ function createScatter(selectionLeft,selectionRight){
 
     Promise.all([d3.json(url1), d3.json(url2)]).then(response => {
         [xdata, ydata] = response;
+        var leftObj ={};
+        var rightObj ={};
+
+        xdata.forEach(d=> leftObj[d.state]=d.rate);
+        createTable(leftObj,'left');
+        ydata.forEach(d=> rightObj[d.state]=d.rate);
+        createTable(rightObj, 'right');
         
         var data = [{
             x: xdata.map(d => d.rate),
             y: ydata.map(d => d.rate),
+            text: ydata.map(d => d.state),
             type: 'scatter',
             mode: 'markers'
         }]
