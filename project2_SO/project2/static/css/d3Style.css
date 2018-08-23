@@ -1,0 +1,31 @@
+/* Students:
+ * =========
+ * Add styling to your d3 chart with this file. */
+
+ .active {
+    font-weight: bold !important;
+    fill: #000 !important;
+    transition: fill 0.3s ease-out !important;
+    text-anchor: middle !important;
+  }
+
+  .active:hover {
+    fill: #000 !important;
+    cursor: default !important;
+  }
+  
+  .default {
+    font-weight: lighter;
+    fill: gray;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  .default:hover {
+    fill: #e75480;
+    cursor: pointer;
+  }
+
+  .abbr:hover {
+    cursor: default
+  }
+  

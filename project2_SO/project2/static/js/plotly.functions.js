@@ -1,3 +1,10 @@
+function createScatter(selectionLeft,selectionRight)
+{
+
+}
+
+
+
 function updatePie()
 {
     initPie('left');
@@ -6,7 +13,7 @@ function updatePie()
 
 
 function initPie(side) {
-    var markerGroup = (side==='left'?markerLeft:markerRight);
+    var markerGroup = side==='left'?markerLeft:markerRight;
     var locations = []
 
     markerGroup.eachLayer(m=>{
@@ -23,8 +30,8 @@ function createPie(locations,side)
     var labels = [];
     var values = [];
 
-    var tag = (side==='left'?'#graph1':'#graph2');
-    var markerGroup = (side==='left'?markerLeft:markerRight);
+    var tag = side==='left'?'#graph1':'#graph2';
+    var markerGroup = side==='left'?markerLeft:markerRight;
 
 
 
@@ -67,16 +74,16 @@ function createPie(locations,side)
     plottingPoint.on('plotly_click', function(data){
             markerGroup.clearLayers();
 
-            var path = '/data/' + (side==='left'?selectionLeft:selectionRight);
+            var path = '/data/' + side==='left'?selectionLeft:selectionRight;
 
             getDataPoints(path,data.points[0].label,side);
         });
 }
 
 
-function createTable(myObj,path,side);
+function createTable(myObj,path,side)
 {
-    var tag = (side==='left'?'#graph1':'#graph2');
+    var tag = side==='left'?'#graph1':'#graph2';
 
     d3.select(tag).selectAll('div').remove();
     var plottingPoint = d3.select(tag).append('div').attr("id",'table');

@@ -1,6 +1,6 @@
 // Initial Params
 var selectionLeft = "obesity";
-var selectionRight = "Restaurant";
+var selectionRight = "fastfood";
 
 init();
 
@@ -10,8 +10,8 @@ function init()
     var selector = d3.selectAll(".select");
   
     // Use the list of sample names to populate the select options
-    d3.json("/names").then((sampleNames) => {
-      sampleNames.forEach((sample) => {
+    d3.json("/names", function(sampleNames)  {
+      sampleNames.slice(0,-1).forEach((sample) => {
         selector
                 .append("p")
                 .text(titleCase(sample))
@@ -25,9 +25,10 @@ function init()
     d3.select('#selection2').select('.'+selectionRight).classed('active',true);
 
     initMap();
+    initPie('right');
     
-    getDataStates('/data/' + selectionLeft, left);
-    getDataPoints('/data/' + selectionRight, undefined,right);
+    getDataStates('/data/' + selectionLeft, 'left');
+    getDataPoints('/data/' + selectionRight, undefined,'right');
     
 }
 
@@ -40,9 +41,9 @@ function switchBoard(selection,side)   //directs user input to proper functions
   {
     setActive(selection,side)
 
-    if(!checkTitleCase(selectionLeft) && !checkTitleCase(selectionRight))  //if both are plotByState
+    if(!checkIfState(selectionLeft) && !checkIfState(selectionRight))  //if both are plotByState
     {
-      createScatter();
+      createScatter(selectionLeft,selectionRight);   ///inside plotly.function.js
     }
     else
     {
@@ -71,7 +72,7 @@ function setActive(selection,side)
 
   d3.select(selection).classed('active',true);
 
-  (side==='left'?selectionLeft:selectionRight) = d3.select(this).attr('value');
+  side==='left'?selectionLeft:selectionRight = d3.select(this).attr('value');
 }
 
 
@@ -82,7 +83,7 @@ function titleCase(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function checkTitleCase(string)   //if first letter of table is uppercase plotByPoint
+function checkIfState(string)
 {
   return (string.charAt(0) == string.charAt(0).toUpperCase())
 }
@@ -108,7 +109,7 @@ map.on('move', updatePie);
 d3.select('#selection1').selectAll('p').on('click',function(){
   markerLeft.clearLayers();
 
-  if(checkTitleCase(selectionLeft))
+  if(checkIfState(selectionLeft))
   {
     geojson.clearLayers();
     legend.remove();
@@ -122,7 +123,7 @@ d3.select('#selection1').selectAll('p').on('click',function(){
 d3.select('#selection2').selectAll('p').on('click',function(){
   markerRight.clearLayers();
 
-  if(checkTitleCase(selectionRight))
+  if(checkIfState(selectionRight))
   {
     geojson.clearLayers();
     legend.remove();

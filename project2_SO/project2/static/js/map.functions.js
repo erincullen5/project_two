@@ -62,6 +62,7 @@ function getDataStates(path, side)
 
     d3.json(path, function(response)       //pulls data from database
     {
+
         response.forEach(d=> myObj[d.state]=d.rate)
 
         createTable(myObj,path,side);
@@ -83,6 +84,7 @@ function getDataStates(path, side)
   
 function plotByPoint(markerData,side)
 {
+    var markerGroup = (side==='left'?markerLeft:markerRight);
 
     // Loop through our data...
     markerData.forEach(d => {
@@ -92,7 +94,7 @@ function plotByPoint(markerData,side)
     // If the data has a location property...
     if (d.latitude && d.longitude){
 
-        var markerGroup = (side==='left'?markerLeft:markerRight);
+        
 
         // Add a new marker to the cluster group and bind a pop-up
         markerGroup.addLayer(L.marker([d.latitude,d.longitude],{title:d.name})

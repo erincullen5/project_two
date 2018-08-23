@@ -29,8 +29,8 @@ html {
 
 .legend li {
   display: inline-block;
-  width: 30px;
-  height: 22px;
+  width: 10px;
+  height: 5px;
 }
 
 .legend .min {
