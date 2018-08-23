@@ -1,52 +1,51 @@
-state,stateAbbr,population
-Alabama,AL,4874747
-Alaska,AK,739795
-Arizona,AZ,7016270
-Arkansas,AR,3004279
-California,CA,39536653
-Colorado,CO,5607154
-Connecticut,CT,3588184
-Delaware,DE,961939
-District of Columbia,DC,693972
-Florida,FL,20984400
-Georgia,GA,10429379
-Hawaii,HI,1427538
-Idaho,ID,1716943
-Illinois,IL,12802023
-Indiana,IN,6666818
-Iowa,IA,3145711
-Kansas,KS,2913123
-Kentucky,KY,4454189
-Louisiana,LA,4684333
-Maine,ME,1335907
-Maryland,MD,6052177
-Massachusetts,MA,6859819
-Michigan,MI,9962311
-Minnesota,MN,5576606
-Mississippi,MS,2984100
-Missouri,MO,6113532
-Montana,MT,1050493
-Nebraska,NE,1920076
-Nevada,NV,2998039
-New Hampshire,NH,1342795
-New Jersey,NJ,9005644
-New Mexico,NM,2088070
-New York,NY,19849399
-North Carolina,NC,10273419
-North Dakota,ND,755393
-Ohio,OH,11658609
-Oklahoma,OK,3930864
-Oregon,OR,4142776
-Pennsylvania,PA,12805537
-Rhode Island,RI,1059639
-South Carolina,SC,5024369
-South Dakota,SD,869666
-Tennessee,TN,6715984
-Texas,TX,28304596
-Utah,UT,3101833
-Vermont,VT,623657
-Virginia,VA,8470020
-Washington,WA,7405743
-West Virginia,WV,1815857
-Wisconsin,WI,5795483
-Wyoming,WY,579315
+0,Alabama,AL,4874747
+1,Alaska,AK,739795
+2,Arizona,AZ,7016270
+3,Arkansas,AR,3004279
+4,California,CA,39536653
+5,Colorado,CO,5607154
+6,Connecticut,CT,3588184
+7,Delaware,DE,961939
+8,District of Columbia,DC,693972
+9,Florida,FL,20984400
+10,Georgia,GA,10429379
+11,Hawaii,HI,1427538
+12,Idaho,ID,1716943
+13,Illinois,IL,12802023
+14,Indiana,IN,6666818
+15,Iowa,IA,3145711
+16,Kansas,KS,2913123
+17,Kentucky,KY,4454189
+18,Louisiana,LA,4684333
+19,Maine,ME,1335907
+20,Maryland,MD,6052177
+21,Massachusetts,MA,6859819
+22,Michigan,MI,9962311
+23,Minnesota,MN,5576606
+24,Mississippi,MS,2984100
+25,Missouri,MO,6113532
+26,Montana,MT,1050493
+27,Nebraska,NE,1920076
+28,Nevada,NV,2998039
+29,New Hampshire,NH,1342795
+30,New Jersey,NJ,9005644
+31,New Mexico,NM,2088070
+32,New York,NY,19849399
+33,North Carolina,NC,10273419
+34,North Dakota,ND,755393
+35,Ohio,OH,11658609
+36,Oklahoma,OK,3930864
+37,Oregon,OR,4142776
+38,Pennsylvania,PA,12805537
+39,Rhode Island,RI,1059639
+40,South Carolina,SC,5024369
+41,South Dakota,SD,869666
+42,Tennessee,TN,6715984
+43,Texas,TX,28304596
+44,Utah,UT,3101833
+45,Vermont,VT,623657
+46,Virginia,VA,8470020
+47,Washington,WA,7405743
+48,West Virginia,WV,1815857
+49,Wisconsin,WI,5795483
+50,Wyoming,WY,579315
