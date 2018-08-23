@@ -1,7 +1,42 @@
-function createScatter(selectionLeft,selectionRight)
-{
+function createScatter(selectionLeft,selectionRight){
+    d3.select('#main-graph').select('div').remove();
+    var plotpoint = d3.select('#main-graph').append('div').attr("id",'scatter').node();
 
-}
+    var url1 = "/data/poverty"
+    var url2 = "/data/obesity"
+    var xdata = ''
+    var ydata = ''
+
+    d3.json(url1, function(response){
+        console.log(response)
+       xdata  = [response]
+    });
+
+    d3.json(url2, function(response){
+        console.log(response)
+        ydata = [response]
+    });
+
+    var data = [{
+        x: xdata,
+        y: ydata,
+        type: 'scatter',
+    }]
+
+    var layout = {
+        title: "${selectionLeft} vs ${selectionRight}",
+        xaxis: {
+          title: "${selectionLeft}"
+        },
+        yaxis: {
+          title: "${selectionRight}"
+        }
+      };
+
+    Plotly.newPlot(plotpoint, data, layout);
+};
+
+createScatter('Obesity','Poverty')
 
 
 
@@ -90,14 +125,6 @@ function createTable(myObj,path,side)
 
     var sortedData = sortProperties(myObj);
 }
-
-
-
-
-
-
-
-
 
 
 function countLocations(arr) 
