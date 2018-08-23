@@ -1,11 +1,16 @@
 html,
 body,
 #map-id {
-  height: 75%;
+  height: 100%;
   width: 90%;
   display: block;
     margin-left: auto;
     margin-right: auto;
   padding: 0;
 
+}
+
+.groupawesome
+{
+  color: yellow !important
 }

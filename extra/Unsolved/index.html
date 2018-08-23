@@ -24,9 +24,9 @@
    <!-- Our CSS -->
    <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <!-- extra_markers -->
+    <!-- extra_markers
     <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
-    <script src="js/leaflet.extra-markers.min.js"></script>
+    <script src="js/leaflet.extra-markers.min.js"></script> -->
 
 	<!-- Marker Cluster JS & CSS -->
 	<script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
@@ -40,19 +40,22 @@
 
 </head>
 <body>
-		<div class="col-xs-12 col-md-12 col-md-offset-0">
-				<h1>D3Times</h1>
-		</div>
+	<nav class="navbar navbar-dark bg-primary">
+		<a class="navbar-brand groupawesome" href="#">
+		  <img src="logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+		  Sassy Stingrays
+		</a>
+	  </nav>
 
-		<div class="row h-100">
+		<div class="row h-50">
 		<div class="col-md-1">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h5 class="panel-title"><strong>Selection 1</strong></h5>
 					<hr>
 				</div>
-				<div id="selection1" class="panel-body">
-					<p>Obesity</p>
+				<div id="selection1" class="panel-body select">
+					<p class='test'>Obesity</p>
 					<p>Obesity</p>
 					<p>Obesity</p>
 				</div>
@@ -64,14 +67,14 @@
 				  <h5 class="panel-title"><strong>Selection 2</strong></h5>
 				  <hr>
 				</div>
-				<div id="selection2" class="panel-body">
-					<p>Obesity</p>
+				<div id="selection2" class="panel-body select">
+					<p class = 'test'>Funding</p>
 					<p>Obesity</p>
 					<p>Obesity</p>
 				</div>
 			  </div>
 		</div>
-		<div id="map-id" class="col-md-10"></div>
+		<div id="main-graph" class="col-md-10"></div>
 	</div>
 
 
@@ -79,17 +82,9 @@
 
 	<!-- <div class="container"> -->
 		<div class="row">
-			<div class="col-xs-12 col-md-12 col-md-offset-0">
-				<h1>D3Times</h1>
-			</div>
+			<button type="button" class="btn btn-link" id='clear_button'>Clear Selection</button>
 		</div>
-		<div class="row">
-			<div class="col-xs-12  col-md-12 col-md-offset-0">
-				<div class="iframeContainer">
-					<!-- <iframe width="100%" height="400" src="map.html"></iframe> -->
-				</div>
-			</div>
-		</div>
+		
 		<div class="row">
 			<div class="col-xs-12  col-md-6 col-md-offset-0">
 				<div id="graph1">
@@ -98,11 +93,7 @@
 			</div>
 			<div class="col-xs-12  col-md-6 col-md-offset-0">
 				<div id="graph2">
-					<p>That night they slept where they were. How Aslan provided food for them all I don't know; but somehow or other they found themselves all sitting down on the grass to a fine high tea at about eight o'clock. Next day they began marching Eastward down the side of the great river. And the next day after that, at about tea-time, they actually reached the mouth. The castle of Cair Paravel on its little hill towered up above them; before them were the sands, with rocks and little pools of salt water, and sea weed, and the smell of the sea, and long miles of bluish-green waves breaking forever and ever on the beach. And, oh, the cry of the sea gulls! Have you heard it? Can you remember?</p>
-					<h5>THE LION, THE WITCH
-						and
-						THE WARDROBE</h5>
-						<h6>BY C. S. LEWIS</h6>
+			
 				</div>
 			</div>
 		</div>
