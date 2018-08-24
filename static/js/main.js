@@ -47,6 +47,9 @@ function switchBoard(selection,side)   //directs user input to proper functions
   
   if (value !== selectionLeft && value !== selectionRight) 
   {
+  
+    if(!checkIfState(side==='left'?selectionLeft:selectionRight))
+      {d3.select('.leaflet-bottom').selectAll('div').remove();}
 
     setActive(selection,side);
 
@@ -62,13 +65,12 @@ function switchBoard(selection,side)   //directs user input to proper functions
     }
     else
     {
-      try{
-        geojson.remove();
-      }
-      finally{
-        clearSide(side);
-        choosePlotby(value,side);
-      }
+      if (checkIfState(selectionLeft) && checkIfState(selectionRight))
+        {geojson.remove();}
+
+      clearSide(side);
+      choosePlotby(value,side);
+      
     }
   }
 }
@@ -80,6 +82,7 @@ function displayMap()
   clearSide('right');
 
   initMap();
+
   
   choosePlotby(selectionLeft,'left');
   choosePlotby(selectionRight,'right');
