@@ -57,9 +57,9 @@ Adult Obesity in the United States - The State of Obesity
 - Interactive map of the US, in where users can review data by zooming in or out
 - On zoom in or out, chart(s) will adjust or filter to selected view
 
-![Scrollama.js][/img/Picture1.png?raw=true]
-![Pie Chart][/img/Picture2.png?raw=true]
-![Obesity Rate][/img/Picture3.png?raw=true]
+![Scrollama.js][img/Picture1.png?raw=true]
+![Pie Chart][img/Picture2.png?raw=true]
+![Obesity Rate][img/Picture3.png?raw=true]
 
 **Project Repository:**
 
