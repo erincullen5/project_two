@@ -48,7 +48,7 @@ function switchBoard(selection,side)   //directs user input to proper functions
   if (value !== selectionLeft && value !== selectionRight) 
   {
 
-    setActive(selection,side)
+    setActive(selection,side);
 
     if(!checkIfState(selectionLeft) && !checkIfState(selectionRight))  //if both are plotByState
     {
