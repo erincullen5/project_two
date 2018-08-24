@@ -155,7 +155,7 @@ function plotByState(rateData)
             // Which property in the geoJSON features to use
             valueProperty: 'STATE',
             // Color scale
-            scale: ["red", "green"],
+            scale: ["green","red"],
             // Number of breaks in step range
             steps: 20,
             // q for quartile, e for equidistant, k for k-means

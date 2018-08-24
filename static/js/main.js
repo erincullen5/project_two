@@ -62,8 +62,13 @@ function switchBoard(selection,side)   //directs user input to proper functions
     }
     else
     {
-      clearSide(side);
-      choosePlotby(value,side);
+      try{
+        geojson.remove();
+      }
+      finally{
+        clearSide(side);
+        choosePlotby(value,side);
+      }
     }
   }
 }
