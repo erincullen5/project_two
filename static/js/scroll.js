@@ -32,7 +32,6 @@ function init(selection) {
         // response = { element, direction, index }
         // add color to current step only
         step.classed('is-active', function (d, i) {
-            console.log(response.index)
             if(response.index===4)
                 {window.open("/home/","_self");}
             return i === response.index;
