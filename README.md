@@ -1,3 +1,5 @@
+Deployed on Heroku [here](https://sassy-stingrays-1337.herokuapp.com/)
+
 **Project # 2 Team - Sassy Stingrays:** Daniel Byrne, Erin Cullen, Greg Rosen, Steven Orn, Vilma Santos
 
 **Project Title:**  State of Obesity and Selected Social Determinants of Health in the United States
@@ -56,6 +58,7 @@ Adult Obesity in the United States - The State of Obesity
 - Home / Index will provide scrolling text boxes that introduces the user to the site and &quot;our story&quot;
 - Interactive map of the US, in where users can review data by zooming in or out
 - On zoom in or out, chart(s) will adjust or filter to selected view
+- Clicking on pie chart will filter map to show only points for that business
 
 ![Scrollama.js](img/Picture1.png?raw=true)
 ![Pie Chart](img/Picture2.png?raw=true)
